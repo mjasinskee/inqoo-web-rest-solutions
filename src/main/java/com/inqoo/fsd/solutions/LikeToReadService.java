@@ -35,6 +35,7 @@ class LikeToReadService {
     void addReview(String title, Review review) {
         Optional<Book> book = repository.findBook(title);
         if (book.isPresent()) {
+            log.info("adding review for {}: {}", title, review);
             repository.addReview(title, review);
         } else {
             log.warn("Could not add review to nor existing book {}", title);

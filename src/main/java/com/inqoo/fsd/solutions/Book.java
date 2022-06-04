@@ -31,4 +31,13 @@ class Book {
     public List<Review> getReviews() {
         return Collections.unmodifiableList(reviews);
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", identifier='" + identifier + '\'' +
+                ", reviews=" + reviews +
+                '}';
+    }
 }

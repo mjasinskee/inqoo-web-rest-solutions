@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class InqooWebRestSolutionsApplication implements CommandLineRunner {
 
@@ -33,5 +35,7 @@ public class InqooWebRestSolutionsApplication implements CommandLineRunner {
         service.addBook("firstName2", "lastName2", new Book("title3", "id3"));
         service.addBook("firstName2", "lastName2", new Book("title4", "id4"));
         service.addBook("firstName2", "lastName2", new Book("title5", "id5"));
+        List<Book> books = service.getBooks();
+        books.forEach(book -> System.out.println("book: " + book));
     }
 }

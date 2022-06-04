@@ -33,12 +33,8 @@ class LikeToReadRepository {
     }
 
     void addReview(String title, Review review) {
-        authors.forEach(author -> author.books().stream()
-                .filter(book -> book.getTitle().equals(title))
-                .findFirst()
-                .ifPresentOrElse(book -> book.addReview(review),
-                        () -> log.warn("Could not add review for not existing book {}", title))
-        );
+        log.info("Adding review for {}: {}", title, review);
+        findBook(title).ifPresentOrElse(book -> book.addReview(review), () -> log.warn("Could not add review for not existing book {}", title));
     }
 
     Optional<Book> findBook(String title) {
