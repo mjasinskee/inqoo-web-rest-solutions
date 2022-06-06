@@ -1,9 +1,11 @@
 package com.inqoo.fsd.solutions;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 class Book {
 
@@ -11,7 +13,10 @@ class Book {
     private final String identifier;
     private final List<Review> reviews = new ArrayList<>();
 
-    Book(String title, String identifier) {
+    @JsonCreator
+    Book(
+            @JsonProperty("title") String title,
+            @JsonProperty("identifier") String identifier) {
         this.title = title;
         this.identifier = identifier;
     }
